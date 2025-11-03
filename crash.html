@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página básica con fondos distintos</title>
+  <link rel="stylesheet" href="crash.css">
+</head>
+<body>
+  <!-- 🔹 NAVBAR -->
+  <nav class="navbar">
+    <div class="left-section">
+      <div class="menu-icon" id="menu-btn">&#9776;</div>
+    </div>
+
+    <div class="nav-links" id="nav-links">
+      <a href="index.html">Inicio</a>
+      <a href="tienda.html">Colección</a>
+      <a href="#">Sobre nosotros</a>
+      <a href="#">Contactos</a>
+    </div>
+
+    <div class="right-section">
+      <a href="#" class="btn login">Iniciar sesión</a>
+      <a href="#" class="btn register">Registrarse</a>
+    </div>
+
+  </nav>
+
+
+  <!-- Sección principal -->
+  <section class="main-section">
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-item">Políticas y privacidad</div>
+    <div class="footer-item">Acerca de Aurea</div>
+    <div class="footer-item"> <img src="img-web/aurea-logo.png" width="180px" alt=""></div>
+    <div class="footer-item">Contactos</div>
+    <div class="footer-item">Servicios al Cliente</div>
+  </footer>
+
+   <script>
+  const menuIcon = document.querySelector('.menu-icon');
+  const navLinks = document.querySelector('.nav-links');
+
+  menuIcon.addEventListener('click', () => {
+    navLinks.classList.toggle('active'); //  activa/desactiva el menú
+  });
+  </script>
+</body>
+</html>

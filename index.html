@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Collection Aurea</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="crash.html">
+  <link rel="stylesheet" href="tienda.html">
+</head>
+<body>
+  
+  <!-- 🔹 NAVBAR -->
+  <nav class="navbar">
+    <div class="left-section">
+      <div class="menu-icon" id="menu-btn">&#9776;</div>
+    </div>
+
+    <div class="nav-links" id="nav-links">
+      <a href="#">Inicio</a>
+      <a href="tienda.html">Colección</a>
+      <a href="#">Sobre nosotros</a>
+      <a href="#">Contactos</a>
+    </div>
+
+    <div class="right-section">
+      <a href="#" class="btn login">Iniciar sesión</a>
+      <a href="#" class="btn register">Registrarse</a>
+    </div>
+
+  </nav>
+
+  <!-- SECCIÓN 1 -->
+<section class="section1">
+  <div class="layout">
+    <!-- GIF de la esfera arriba -->
+    <div class="center-sphere">
+      <img src="img-web/oryx-sinfondo.gif" alt="Esfera">
+    </div>
+
+    <!-- Contenedor de las prendas con scroll horizontal solo en mobile -->
+    <div class="horizontal-scroll">
+      <div class="item item1">
+        <a href="tienda.html"><img src="img-web/pollera.png" alt="Polera 1"></a>
+        <p class="texto" >Prisma Skirt</p>
+        <span class="texto3">$★★★★</span>
+      </div>
+
+      <div class="item item3">
+        <a href="tienda.html"><img src="img-web/pantalon.png" alt="Polera 3"></a>
+        <p class="texto">Underlayer Monarch Pants</p>
+        <span class="texto3">$★★★</span>
+      </div>
+
+      <div class="item item2">
+        <a href="tienda.html"><img src="img-web/camisa.png" alt="Polera 2"></a>
+        <p class="texto">Fase Lunar Skin (TOP)</p>
+        <span class="texto3">$★★★</span>
+      </div>
+    </div>
+
+    <!-- Puntitos debajo para mostrar el ítem actual -->
+    <div class="dots-container">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </div>
+</section>
+
+
+
+  <!-- SECCIÓN 2 -->
+  <section class="section2">
+    <div class="gallery">
+      <div class="card"><a href="tienda.html"><img src="img-web/1.png" alt=""><div class="info"><p class="texto2">Pollera Core Memory</p><span class="texto3">$★★★</span></div></a></div>
+      <div class="card"><a href="tienda.html"><img src="img-web/2.png" alt=""><div class="info"><p class="texto2">Vibrando Alto Tee</p><span class="texto3">$★★★★</span></div></a></div>
+      <div class="card"><a href="tienda.html"><img src="img-web/3.png" alt=""><div class="info"><p class="texto2">Grr Mood (On Fire Version)</p><span class="texto3">$★★★★★</span></div></a></div>
+      <div class="card"><a href="tienda.html"><img src="img-web/4.png" alt=""><div class="info"><p class="texto2">Cosmic Boots Reloaded</p><span class="texto3">$★★</span></div></a></div>
+      <div class="card"><a href="tienda.html"><img src="img-web/5.png" alt=""><div class="info"><p class="texto2">LA queen dress</p><span class="texto3">$★★★★</span></div></a></div>
+      <div class="card"><a href="tienda.html"><img src="img-web/6.png" alt=""><div class="info"><p class="texto2">Estrella, Orix Drip</p><span class="texto3">$★★★</span></div></a></div>
+    </div>
+     <button class="ver-mas"> <a href="tienda.html">Ver más</a></button>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-item">Políticas y privacidad</div>
+    <div class="footer-item">Acerca de Aurea</div>
+    <div class="footer-item"> <img src="img-web/aurea-logo.png" width="180px" alt=""></div>
+    <div class="footer-item">Contactos</div>
+    <div class="footer-item">Servicios al Cliente</div>
+  </footer>
+
+   <script>
+  const menuIcon = document.querySelector('.menu-icon');
+  const navLinks = document.querySelector('.nav-links');
+
+  menuIcon.addEventListener('click', () => {
+    navLinks.classList.toggle('active'); //  activa/desactiva el menú
+  });
+
+  
+  </script>
+
+</body>
+</html>

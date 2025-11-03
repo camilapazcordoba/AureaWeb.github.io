@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carrusel Curvo Infinito GSAP</title>
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: url(fondo-tienda.png) no-repeat center center fixed;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  perspective: 1200px;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ======= DESKTOP ======= */
+.scene {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  transform-style: preserve-3d;
+}
+
+.card {
+  position: absolute;
+  width: 40vw;
+  height: 90vh;
+  left: 50%;
+  top: 50%;
+  transform-style: preserve-3d;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
+  transform-origin: center center;
+  background: #111;
+}
+
+.card img {
+  width: 100%;
+  height: 70%;
+  object-fit: cover;
+}
+
+.caption {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: url(caption.png);
+  background-position: center;
+  background-size: cover;
+  color: #fff;
+  text-align: center;
+  padding: 25px 50px;
+  top: 68%;
+  font-size: 1.3rem;
+}
+
+.caption .desc {
+  font-size: 20px;
+  opacity: 0.85;
+  margin-top: 5px;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.texto2 {
+  color: #c68fff;
+  font-size: 26px;
+  margin: 0;
+  text-align: left;
+}
+
+.texto3 {
+  color: #c68fff;
+  font-weight: 700;
+  font-size: 34px;
+  margin: 0;
+  text-align: right;
+}
+
+.ver-mas {
+  margin-top: 50px;
+  background: #c68fff;
+  color: white;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+.ver-mas:hover {
+  box-shadow: 0 0 15px 5px rgba(198, 143, 255, 0.8);
+}
+
+/* === BOTONES LATERALES === */
+.controls {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  padding: 0 40px;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.btn {
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  color: #fff;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: all;
+  backdrop-filter: blur(4px);
+}
+
+.btn:hover {
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(1.1);
+}
+
+a {
+  text-decoration: none;
+}
+
+/* ======= RESPONSIVE (móviles y tablets) ======= */
+@media (max-width: 900px) {
+  body {
+    perspective: none !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    background: url(fondo77.png) !important;
+    background-size: contain;
+    background-attachment: scroll;
+    display: block !important;
+  }
+
+  .scene {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    transform: none !important;
+    width: 100% !important;
+    height: auto !important;
+    position: relative !important;
+    perspective: none !important;
+    padding: 74px 10px !important;
+  }
+
+  .card {
+    position: relative !important;
+    transform: none !important;
+    width: 85% !important;
+    max-width: 400px !important;
+    height: auto !important;
+    margin: 30px 0 !important;
+    left: auto !important;
+    top: auto !important;
+    opacity: 1 !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+  }
+
+  .card img {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: cover !important;
+  }
+
+  .caption {
+    position: relative !important;
+    top: 0 !important;
+    background: rgba(0, 0, 0, 0.6) !important;
+    padding: 20px !important;
+  }
+
+  .caption .desc {
+    font-size: 16px !important;
+    line-height: 1.4 !important;
+  }
+
+  .texto2 {
+    font-size: 20px !important;
+  }
+
+  .texto3 {
+    font-size: 24px !important;
+  }
+
+  .ver-mas {
+    margin-top: 20px !important;
+    padding: 8px 20px !important;
+    font-size: 16px !important;
+  }
+
+  .controls {
+    display: none !important;
+  }
+}
+  </style>
+</head>
+<body>
+  <div class="scene">
+    <div class="card">
+      <img src="1-tienda.png" />
+      <div class="caption">
+         <div class="info"><p class="texto2">Pollera Core Memory</p><span class="texto3">$★★★</span></div>
+        <div class="desc">Guarda tu historia, vibra con tus recuerdos. Cada pliegue activa una emoción que creías dormida. Tu pasado, pero make it fashion.</div>
+         <button class="ver-mas"> <a href="crash.html">Comprar ahora</a></button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="2-tienda.png" />
+      <div class="caption">
+        <div class="info"><p class="texto2">Vibrando Alto Tee</p> <span class="texto3">$★★★</span></div>
+        <div class="desc">Tu frecuencia hecha tela. Para los días en que tu Orix se eleva y no hay algoritmo que pueda bajarte la energía.</div>
+         <button class="ver-mas"> <a href="crash.html">Comprar ahora</a></button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="3-tienda.png" />
+      <div class="caption">
+        <div class="info"><p class="texto2"> Grr Mood (On Fire Version)</p> <span class="texto3">$★★★★★</span></div>
+        <div class="desc">Cuando el fuego interno pide pista. Texturas ferales, poder encendido. No es un outfit, es una advertencia.</div>
+         <button class="ver-mas"> <a href="crash.html">Comprar ahora</a></button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="4-tienda.png" />
+      <div class="caption">
+        <div class="info"><p class="texto2">Cosmic Boots Reloaded</p> <span class="texto3">$★★</span></div>
+        <div class="desc">Pasos interestelares, energía terrestre. Caminá como si el universo estuviera viendo. Spoiler: lo está.</div>
+         <button class="ver-mas"> <a href="crash.html">Comprar ahora</a></button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="5-tienda.png" />
+      <div class="caption">
+        <div class="info"><p class="texto2">LA Queen Dress </p> <span class="texto3">$★★★★</span></div>
+        <div class="desc">Una silueta que domina su propio reino. Desafía la gravedad, el canon y la mirada. Slay queen energy, versión Áurea.</div>
+         <button class="ver-mas"> <a href="crash.html">Comprar ahora</a></button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="6-tienda.png" />
+      <div class="caption">
+        <div class="info"><p class="texto2">Estrella, Orix Drip</p> <span class="texto3">$★★★</span></div>
+        <div class="desc">Tu luz derramada, tu esencia visible. Brillás distinto cada vez que cambiás de mood. Iluminá el caos, pero con estilo.</div>
+        <button class="ver-mas"> <a href="crash.html">Comprar ahora</a></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Botones laterales -->
+  <div class="controls">
+    <button class="btn prev">◀</button>
+    <button class="btn next">▶</button>
+  </div>
+
+  <script>
+  const cards = document.querySelectorAll(".card");
+  const total = cards.length;
+  const radius = 1200;
+  let angleOffset = 0;
+  const angleStep = (Math.PI * 2) / total;
+
+  function positionCards() {
+    if (window.innerWidth > 900) {
+      // --- MODO DESKTOP: carrusel curvado ---
+      cards.forEach((card, i) => {
+        const theta = (i * angleStep) + angleOffset;
+        const x = Math.sin(theta) * radius * 0.6;
+        const z = (Math.cos(theta) - 1) * radius;
+        const rotY = Math.sin(theta) * 50;
+
+        gsap.set(card, {
+          xPercent: -50,
+          yPercent: -50,
+          x,
+          z,
+          rotationY: rotY,
+          opacity: 1,
+          scale: 1,
+          clearProps: "position,width,height,margin"
+        });
+      });
+    } else {
+      // --- MODO MOBILE: reset total ---
+      cards.forEach(card => {
+        // eliminar todas las transformaciones que GSAP haya aplicado
+        gsap.killTweensOf(card);
+        gsap.set(card, {
+          clearProps: "all"
+        });
+        // también limpiar manualmente el estilo inline (backup)
+        card.removeAttribute("style");
+      });
+    }
+  }
+
+  function rotate(direction) {
+    if (window.innerWidth <= 900) return; // desactivar rotación en mobile
+    angleOffset += direction * angleStep;
+    cards.forEach((card, i) => {
+      const theta = (i * angleStep) + angleOffset;
+      const x = Math.sin(theta) * radius * 0.6;
+      const z = (Math.cos(theta) - 1) * radius;
+      const rotY = Math.sin(theta) * 50;
+
+      gsap.to(card, {
+        duration: 1.2,
+        ease: "power2.inOut",
+        x,
+        z,
+        rotationY: rotY,
+        opacity: 1,
+        scale: 1
+      });
+    });
+  }
+
+  document.querySelector(".next").addEventListener("click", () => rotate(1));
+  document.querySelector(".prev").addEventListener("click", () => rotate(-1));
+
+  positionCards();
+  window.addEventListener("resize", positionCards);
+</script>
+</body>
+</html>
